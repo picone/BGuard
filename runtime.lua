@@ -11,7 +11,7 @@ local remote_ip=ngx.var.remote_addr
 local block_key=remote_ip.."_block"
 if _Dict:get(block_key)
 then--存在于黑名单中
-  ngx.exit(ngx.HTTP_FORBIDDEN)
+  ngx.redirect(_Config.redirect_url,ngx.HTTP_MOVED_TEMPORARILY)
 else--还不存在黑名单中
   local white_key=remote_ip.."_white";
   if _Dict:get(white_key) then--若不在IP白名单内

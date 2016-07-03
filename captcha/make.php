@@ -1,0 +1,52 @@
+<?php
+define('WIDTH',160);
+define('HEIGHT',40);
+define('FONT','font.ttf');
+define('FONT_SIZE',28);
+define('DESTROY',160);
+for($i=0;$i<=9;$i++){
+  for($j=0;$j<=9;$j++){
+    for($k=0;$k<=9;$k++){
+      for($l=0;$l<=9;$l++){
+        $im=imagecreatetruecolor(WIDTH,HEIGHT);
+        $text_color=ImageColorAllocate($im,mt_rand(0,100),mt_rand(0,100),mt_rand(0,100));
+        $backgroud_color=ImageColorAllocate($im,mt_rand(100,255),mt_rand(100,255),mt_rand(100,255));
+        imagefill($im,16,13,$backgroud_color);
+        
+        imagettftext($im,FONT_SIZE,mt_rand(0,30)-15,15,intval(0.875*HEIGHT),$text_color,FONT,(string)$i);
+        imagettftext($im,FONT_SIZE,mt_rand(0,30)-15,15+1*FONT_SIZE,intval(0.875*HEIGHT),$text_color,FONT,(string)$j);
+        imagettftext($im,FONT_SIZE,mt_rand(0,30)-15,15+2*FONT_SIZE,intval(0.875*HEIGHT),$text_color,FONT,(string)$k);
+        imagettftext($im,FONT_SIZE,mt_rand(0,30)-15,15+3*FONT_SIZE,intval(0.875*HEIGHT),$text_color,FONT,(string)$l);
+        
+        $destroy_im=imagecreatetruecolor(WIDTH,HEIGHT);
+        imagefill($destroy_im,16,13,$backgroud_color);
+        for($x=0;$x<WIDTH;$x++){
+          for($y=0;$y<HEIGHT;$y++){
+            $destroy_color=imagecolorat($im,$x,$y);
+            $tmp=(int)($x+20+sin($y/HEIGHT*2*M_PI)*10);
+            if($tmp>=0&&$tmp<=imagesx($destroy_im)){
+              imagesetpixel($destroy_im,(int)($x+10+sin($y/HEIGHT*2*M_PI-M_PI*0.1)*4),$y,$destroy_color);
+            }
+          }
+        }
+        for($m=0;$m<DESTROY;$m++){
+          $destroy_color=ImageColorallocate($destroy_im,mt_rand(0,255),mt_rand(0,255),mt_rand(0,255));
+          imagesetpixel($destroy_im,mt_rand()%WIDTH,mt_rand()%HEIGHT,$destroy_color);
+        }
+        $rand1=mt_rand(5,30);
+        $rand2=mt_rand(15,25);
+        $rand3=mt_rand(5,10);
+        for($m=$rand1;$m<=+$rand1+2;$m++){
+          for($n=-WIDTH/2;$n<=WIDTH/2;$n=$n+0.1){
+            imagesetpixel($destroy_im,$n+WIDTH/2,sin($n/$rand2)*$rand3+$m,$text_color);
+          }
+        }
+        ImagePNG($destroy_im,$i.$j.$k.$l.'.png');
+        ImageDestroy($destroy_im);
+        ImageDestroy($im);
+      }
+    }
+    echo '进度:',$i*10+$j+1,'/100',PHP_EOL;
+  }
+}
+?>

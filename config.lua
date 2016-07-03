@@ -1,4 +1,5 @@
 return {
+  base_dir="/doc/program/BGuard/",
   expires=120,
   white_time=120,
   block_time=300,
@@ -9,7 +10,7 @@ return {
     no_attack_times=3,
     limit=80
   },
-  guard_uri="\\.php$",
+  redirect_url="http://localhost/bguard",
   white_ip={
     "106.38.241.161",
     "14.150.167.172",

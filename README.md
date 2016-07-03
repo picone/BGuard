@@ -36,3 +36,9 @@ openresty
 6.设置查看状态的url
 
 在您需要的location里面加入`content_by_lua_file "/your_project_path/status.lua";`
+
+7.设置验证码页面
+
+在指定的location下面加入`content_by_lua_file "/your_project_path/captcha.lua";`
+
+验证码生成:使用php运行captcha/make.php即可
