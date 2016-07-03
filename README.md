@@ -21,6 +21,6 @@
 
 在需要的http/server/location/if下加入
 
-`if $white_list "your white list name";`
+`set $white_list "your white list name";`
 
 `access_by_lua_file "/your_project_path/runtime.lua";`
