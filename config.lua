@@ -1,7 +1,7 @@
 return {
-  expires=60,
+  expires=120,
   white_time=300,
-  block_time=1,
+  block_time=300,
   verify_times=5,
   guard_uri="\\.php$",
   white_list={

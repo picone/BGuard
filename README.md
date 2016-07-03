@@ -26,3 +26,7 @@ openresty
 `set $white_list "your white list name";`
 
 `access_by_lua_file "/your_project_path/runtime.lua";`
+
+5.设置查看状态的ur
+
+在您需要的location里面加入`content_by_lua_file "/your_project_path/.lua";`

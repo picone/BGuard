@@ -54,12 +54,12 @@ else--还不存在黑名单中
             local_key=randomString(8)
           end
           --ngx.log(ngx.INFO,remote_ip..":发送key"..local_key)
-          _Dict:add(key_key,local_key,_Config.block_time)--保存验证key
+          _Dict:add(key_key,local_key,_Config.expires)--保存验证key
           ngx.header['Set-Cookie']={"bguard="..local_key.."; path=/"}--客户端设置Cookie
           if verify_times then
             _Dict:incr(verify_key,1)--验证次数+1
           else
-            _Dict:set(verify_key,1,_Config.block_time)
+            _Dict:set(verify_key,1,_Config.expires)
           end
         end
       end
