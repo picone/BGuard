@@ -11,5 +11,9 @@ return {
   verify_times=5,
   guard_uri="\\.php$",
   white_list={
+    localhost={
+      "/tz.php",
+      "^/t"
+    }
   }
 }
