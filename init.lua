@@ -17,5 +17,3 @@ for i,ip in ipairs(_Config.white_ip)
 do
   _Dict:set(ip.."_white",1,1)--设置flag为1标记为白名单IP
 end
-
---ss -tn state established '( sport = :80 )'|wc -l

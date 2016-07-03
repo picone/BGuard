@@ -1,8 +1,14 @@
 return {
   expires=120,
-  white_time=300,
+  white_time=120,
   block_time=300,
   verify_times=5,
+  auto_limit={
+    limit_connect=4000,
+    detect_time=60,
+    no_attack_times=3,
+    limit=80
+  },
   guard_uri="\\.php$",
   white_ip={
     "106.38.241.161",
@@ -29,6 +35,7 @@ return {
     "203.208.60.250",
     "203.208.60.251",
     "203.208.60.252",
+    "207.46.13.58",
     "220.181.125.201",
     "23.88.2.116",
     "42.120.160.49",

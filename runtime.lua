@@ -14,7 +14,16 @@ then--存在于黑名单中
   ngx.exit(ngx.HTTP_FORBIDDEN)
 else--还不存在黑名单中
   local white_key=remote_ip.."_white";
-  if not _Dict:get(white_key) then--若不在IP白名单内
+  if _Dict:get(white_key) then--若不在IP白名单内
+    if _Dict:get("NO_ATTACK_TIMES") then--连接数超过限制,正在受攻击
+      local num=_Dict:incr(white_key,1)
+      ngx.log(ngx.INFO,remote_ip.."访问量:"..num)
+      if num>_Config.auto_limit.limit then--该IP的访问量超过设定
+        _Dict:add(block_key,_Config.block_time)
+        _Dict:delete(white_key)
+      end
+    end
+  else
     --判断是否在白名单URI内
     local in_white_list=false;
     if ngx.var.white_list and _Config.white_list[ngx.var.white_list]

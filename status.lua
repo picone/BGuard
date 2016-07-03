@@ -16,6 +16,12 @@ do
   end
 end
 
+if _Dict:get("NO_ATTACK_TIMES")
+then
+  ngx.say("ATTACKING")
+else
+  ngx.say("NO_ATTACK")
+end
 ngx.say("block list:"..#block_list)
 ngx.say(table.concat(block_list,"\r\n"))
 ngx.say("\r\nwhite_list:"..#white_list)
