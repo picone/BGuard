@@ -24,7 +24,6 @@ openresty
 如果不需要超过当前连接数启动限制模块,可以不添加此模块
 
 添加到http下面`init_worker_by_lua_file "/your_project_path/worker.lua";`
-添加到http下面`init_worker_by_lua_file "/your_project_path/worker.lua";`
 
 5.设置接受请求时处理的lua脚本
 

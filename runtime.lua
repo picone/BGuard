@@ -17,7 +17,7 @@ else--还不存在黑名单中
   if _Dict:get(white_key) then--若不在IP白名单内
     if _Dict:get("NO_ATTACK_TIMES") then--连接数超过限制,正在受攻击
       local num=_Dict:incr(white_key,1)
-      ngx.log(ngx.INFO,remote_ip.."访问量:"..num)
+      --ngx.log(ngx.INFO,remote_ip.."访问量:"..num)
       if num>_Config.auto_limit.limit then--该IP的访问量超过设定
         _Dict:add(block_key,_Config.block_time)
         _Dict:delete(white_key)

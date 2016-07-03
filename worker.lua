@@ -1,6 +1,6 @@
 local function detect_conn()
   local num=tonumber(io.popen("ss -tn state established '( sport = :80 )'|wc -l"):read("*all"))
-  ngx.log(ngx.INFO,"当前连接数"..num)
+  --ngx.log(ngx.INFO,"当前连接数"..num)
   if num and num>_Config.auto_limit.limit_connect
   then
     _Dict:set("NO_ATTACK_TIMES",1)
