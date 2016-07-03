@@ -16,7 +16,7 @@ do
   end
 end
 
-ngx.say("block list:")
+ngx.say("block list:"..#block_list)
 ngx.say(table.concat(block_list,"\r\n"))
-ngx.say("\r\nwhite_list:")
+ngx.say("\r\nwhite_list:"..#white_list)
 ngx.say(table.concat(white_list,"\r\n"))
