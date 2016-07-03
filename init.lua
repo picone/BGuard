@@ -1,5 +1,5 @@
-_Redis=require "resty.redis"
 _Config=require("config")
+_Dict=ngx.shared.guard;
 
 --生成随机字符串
 function randomString(length)
@@ -11,3 +11,5 @@ function randomString(length)
   end
   return result
 end
+
+--ss -tn state established '( sport = :80 )'|wc -l
