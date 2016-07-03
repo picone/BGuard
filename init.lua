@@ -12,4 +12,10 @@ function randomString(length)
   return result
 end
 
+--初始化白名单
+for i,ip in ipairs(_Config.white_ip)
+do
+  _Dict:set(ip.."_white",1)
+end
+
 --ss -tn state established '( sport = :80 )'|wc -l
